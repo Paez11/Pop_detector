@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Pop Detector</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <h1>Pop Detector</h1>
+            </header>
+            <hr class="divisor">
+            <main>
+                <form onsubmit="classifySong(event)">
+                    <textarea name="lyrics" placeholder="Ingresa la letra de la canción aquí..."></textarea><br><br>
+                    <input type="submit" value="Clasificar">
+                </form>
+                <div class="modelsResults">
+                    <div class="resultContainer" data-model="Regresión Logística" style="display:none;">
+                        <span>Regresión Logística: <span class="result-text"></span></span>
+                    </div>
+                    <div class="resultContainer" data-model="SGDClassifier" style="display:none;">
+                        <span>SGDClassifier: <span class="result-text"></span></span>
+                    </div>
+                    <div class="resultContainer" data-model="Red Neuronal" style="display:none;">
+                        <span>Red Neuronal: <span class="result-text"></span></span>
+                    </div>
+                </div>
+            </main>
+            <footer>
+                <p>Desarrolladores:  Daniel Marín López | Guadalupe Luna Velázquez | Marta López Urbano | Víctor Páez Anguita</p>
+            </footer>
+        </div>
+
+        <!-- Referencia al archivo JavaScript -->
+        <script src="{{ url_for('static', filename='classifier.js') }}"></script>
+    </body>
+</html>
