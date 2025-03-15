@@ -4,8 +4,6 @@ import os
 
 app = Flask(__name__)
 
-# Asegúrate de que Flask pueda servir archivos estáticos
-#app.static_folder = 'templates/static'
 
 home = "index.html"
 
