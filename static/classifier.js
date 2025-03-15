@@ -3,6 +3,12 @@ async function classifySong(event) {
 
     const formData = new FormData(document.querySelector('form'));
     const lyrics = formData.get('lyrics');  // Captura la letra de la canción
+    // Validar si el campo de texto está vacío
+    if (!lyrics || lyrics.trim() === "") {
+        alert("Por favor, ingresa la letra de una canción antes de clasificar.");
+        return;  // Detener la ejecución si no hay letra
+    }
+
     console.log('Lyrics:', lyrics);  // Verifica si la letra se captura correctamente
 
     // Realiza la solicitud POST a /classify con los datos del formulario
@@ -38,25 +44,35 @@ async function classifySong(event) {
 
         // Cambiar el color del borde según el resultado de cada modelo
         if (result['Regresión Logística'] === "Pop") {
-            resultContainerLogistic.style.borderColor = 'green';
+            resultContainerLogistic.style.borderColor = '#238636';  // Color para "Pop"
         } else {
-            resultContainerLogistic.style.borderColor = 'red';
+            resultContainerLogistic.style.borderColor = '#f5f5f5';  // Color para "Non-pop"
         }
 
         if (result['SGDClassifier'] === "Pop") {
-            resultContainerSgd.style.borderColor = 'green';
+            resultContainerSgd.style.borderColor = '#238636';  // Color para "Pop"
         } else {
-            resultContainerSgd.style.borderColor = 'red';
+            resultContainerSgd.style.borderColor = '#f5f5f5';  // Color para "Non-pop"
         }
 
         if (result['Red Neuronal'] === "Pop") {
-            resultContainerNN.style.borderColor = 'green';
+            resultContainerNN.style.borderColor = '#238636';  // Color para "Pop"
         } else {
-            resultContainerNN.style.borderColor = 'red';
+            resultContainerNN.style.borderColor = '#f5f5f5';  // Color para "Non-pop"
         }
     } else {
         // Si la respuesta es un error, muestra el mensaje
         console.error('Error:', result.error);
         alert('Hubo un error al procesar la solicitud: ' + result.error);
     }
+}
+function clearForm() {
+    // Limpiar el área de texto
+    document.querySelector('textarea[name="lyrics"]').value = '';
+
+    // Ocultar los contenedores de resultados
+    const resultContainers = document.querySelectorAll('.resultContainer');
+    resultContainers.forEach(container => {
+        container.style.display = 'none';
+    });
 }
