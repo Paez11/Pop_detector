@@ -43,19 +43,19 @@ async function classifySong(event) {
         resultTextNN.innerText = result['Red Neuronal'];
 
         // Cambiar el color del borde según el resultado de cada modelo
-        if (result['Regresión Logística'] === "Pop") {
+        if (result['Regresión Logística'] === "pop") {
             resultContainerLogistic.style.borderColor = '#238636';  // Color para "Pop"
         } else {
             resultContainerLogistic.style.borderColor = '#f5f5f5';  // Color para "Non-pop"
         }
 
-        if (result['SGDClassifier'] === "Pop") {
+        if (result['SGDClassifier'] === "pop") {
             resultContainerSgd.style.borderColor = '#238636';  // Color para "Pop"
         } else {
             resultContainerSgd.style.borderColor = '#f5f5f5';  // Color para "Non-pop"
         }
 
-        if (result['Red Neuronal'] === "Pop") {
+        if (result['Red Neuronal'] === "pop") {
             resultContainerNN.style.borderColor = '#238636';  // Color para "Pop"
         } else {
             resultContainerNN.style.borderColor = '#f5f5f5';  // Color para "Non-pop"

@@ -31,7 +31,7 @@ def classify_song(lyrics: str) -> dict:
     resultado_logistico = modelo_logistico.predict(lyrics_vectorized.toarray())[0]
 
     # Convertir los resultados a tipos nativos de Python
-    resultado_nn = "Pop" if resultado_nn >= 0.5 else "Non-pop"  # Convertir a string
+    resultado_nn = "pop" if resultado_nn >= 0.5 else "non-pop"  # Convertir a string
     resultado_sgd = str(resultado_sgd)  # Convertir a string
     resultado_logistico = str(resultado_logistico)  # Convertir a string
 
