@@ -17,8 +17,14 @@
         <main>
             <form onsubmit="classifySong(event)">
                 <textarea name="lyrics" placeholder="Ingresa la letra de la canción aquí..."></textarea><br><br>
-                <input type="submit" value="Clasificar">
-                <button type="button" onclick="clearForm()">Borrar</button>
+                <div class="button-container">
+                    <input type="submit" value="Clasificar">
+                    <button type="button" onclick="clearForm()">Borrar</button>
+                    <div class="file-upload">
+                        <input type="file" id="audioFile" accept="audio/*">
+                        <label for="audioFile" class="upload-button" onclick="uploadAudio(event)">Subir Audio</label>
+                    </div>
+                </div>
             </form>
             <div class="modelsResults">
                 <div class="resultContainer" data-model="Regresión Logística" style="display:none;">
